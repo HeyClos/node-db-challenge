@@ -4,9 +4,9 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('projects').insert([
-        {name: 'Backyard redesign', descriptions:'Summer backyard work', completed: false},
-        {name: 'Job Hunt', descriptions:'find a new job', completed: false},
-        {name: 'Urban Farm', descriptions:'Bring urban farming here', completed: false}
+        {name: 'Backyard redesign', description:'Summer backyard work', completed: false},
+        {name: 'Job Hunt', description:'find a new job', completed: false},
+        {name: 'Urban Farm', description:'Bring urban farming here', completed: false}
       ]);
     });
 };

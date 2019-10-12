@@ -1,6 +1,5 @@
 const express = require('express');
 
-
 const Projects = require('./projectsModel');
 const Tasks = require('../tasks/tasksModel')
 const Resources = require('../resources/resourcesModel')
@@ -16,9 +15,9 @@ const router = express.Router();
 // x adding projects. :: POST /
 // x retrieving a list of projects.
 // x adding tasks.
-// !!!! retrieving a list of tasks. The list of tasks should include the 
+// x retrieving a list of tasks. The list of tasks should include the 
 //   project name and project description.
-// ??? When returning project or task information, the completed property 
+// x When returning project or task information, the completed property 
 //   should be true or false.
 
 router.post('/', (req, res) => {

@@ -6,7 +6,8 @@ exports.up = function(knex, Promise) {
           .unique()
           .notNullable();
       tbl.string('description', 128)
-      tbl.boolean('false')
+      tbl.boolean('completed')
+          .defaultTo('false')
           .notNullable();
     })
     .createTable('resources', tbl => {
@@ -20,8 +21,9 @@ exports.up = function(knex, Promise) {
       tbl.string('description', 128)
           .unique()
           .notNullable();
-      tbl.notes('notes', 128)
-      tbl.boolean('false')
+      tbl.string('notes', 128)
+      tbl.boolean('completed')
+          .defaultTo('false')
           .notNullable();
     //   tbl.integer('recipe_id')
     //       .unsigned()

@@ -10,30 +10,30 @@ module.exports = {
 };
 
 function get() {
-    return db('projects');
+    return db('resources');
 }
 
 function getById(id) {
-    return db('projects')
+    return db('resources')
       .where({ id })
       .first();
 }
 
-function insert(project) {
-  return db('projects')
-    .insert(project)
+function insert(resource) {
+  return db('resources')
+    .insert(resource)
     .then(([id]) => this.get(id));
 }
 
 function update(id, changes) {
-  return db('projects')
+  return db('resources')
     .where('id', id)
     .update(changes)
     .then(count => (count > 0 ? this.get(id) : null));
 }
 
 function remove(id) {
-  return db('projects')
+  return db('resources')
     .where('id', id)
     .del();
 }

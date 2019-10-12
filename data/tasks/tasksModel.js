@@ -10,30 +10,30 @@ module.exports = {
 };
 
 function get() {
-    return db('projects');
+    return db('tasks');
 }
 
 function getById(id) {
-    return db('projects')
+    return db('tasks')
       .where({ id })
       .first();
 }
 
-function insert(project) {
-  return db('projects')
-    .insert(project)
+function insert(task) {
+  return db('tasks')
+    .insert(task)
     .then(([id]) => this.get(id));
 }
 
 function update(id, changes) {
-  return db('projects')
+  return db('tasks')
     .where('id', id)
     .update(changes)
     .then(count => (count > 0 ? this.get(id) : null));
 }
 
 function remove(id) {
-  return db('projects')
+  return db('tasks')
     .where('id', id)
     .del();
 }

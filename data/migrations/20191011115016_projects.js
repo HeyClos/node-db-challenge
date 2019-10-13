@@ -24,28 +24,36 @@ exports.up = function(knex, Promise) {
       tbl.string('notes', 128)
       tbl.boolean('completed')
           .defaultTo('false')
-          .notNullable();
-    //   tbl.integer('recipe_id')
-    //       .unsigned()
-    //       .notNullable()
-    //       .references('id')
-    //       .inTable('recipes')
-    //   tbl.integer('ingredient_id')
-    //       .unsigned()
-    //       .notNullable()
-    //       .references('id')
-    //       .inTable('ingredients')
-    //   tbl.integer('quantity')
-    //       .unsigned()
-    //       .notNullable()
-    //   tbl.primary(['recipe_id', 'ingredient_id']);
+          .notNullable()
+      })
+    .createTable('projects_resources', tbl => {
+      tbl.increments();
+      tbl.integer('projects_id')
+         .unsigned()
+         .notNullable()
+         .references('id')
+         .inTable('projects')
+         .onUpdate('CASCADE')
+         .onDelete('CASCADE')
+      tbl.integer('resources_id')
+         .unsigned()
+         .notNullable()
+         .references('id')
+         .inTable('resources')
+         .onUpdate('CASCADE')
+         .onDelete('CASCADE')
     })
   };
   
   exports.down = function(knex) {
     return knex.schema
+      .dropTableIfExists('projects_resources')
       .dropTableIfExists('tasks')
       .dropTableIfExists('resources')
       .dropTableIfExists('projects')
   };
   
+  // db('projects')
+  // .select('columns', 'columns')
+  // .join('table', 'foreign_key' '=' 'primary_key')
+  // .where({ id })

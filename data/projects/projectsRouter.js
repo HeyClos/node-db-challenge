@@ -20,6 +20,22 @@ const router = express.Router();
 // x When returning project or task information, the completed property 
 //   should be true or false.
 
+// working with resources and tasks will require a helper 
+// function that uses a bridge table!
+
+router.get('/testing', (req, res) => {
+    Projects.testing()
+        .then(project => {
+            res.status(201).json(project)
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(500).json({
+                error: "There was an error while saving the project to the database"
+            })
+        })
+})
+
 router.post('/', (req, res) => {
     Projects.insert(req.body)
         .then(project => {

@@ -5,7 +5,8 @@ module.exports = {
   getById,
   insert,
   update,
-  remove
+  remove,
+  testing
 };
 
 function get() {
@@ -35,4 +36,11 @@ function remove(id) {
   return db('projects')
     .where('id', id)
     .del();
+}
+
+function testing() {
+  return db('projects as p')
+    .join('projects_resources as b', 'p.id', '=', 'b.projects_id')
+    .join('resources as r', 'b.resources_id', '=', 'r.id')
+    .select('p.name', 'p.description', 'p.completed')
 }

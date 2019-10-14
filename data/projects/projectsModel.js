@@ -38,6 +38,20 @@ function remove(id) {
     .del();
 }
 
+function getTask() {
+  return db('projects as p')
+    .join('projects_resources as b', 'p.id', '=', 'b.projects_id')
+    .join('resources as r', 'b.resources_id', '=', 'r.id')
+    .select('p.name', 'p.description', 'p.completed')
+}
+
+function getResource() {
+  return db('projects as p')
+    .join('projects_resources as b', 'p.id', '=', 'b.projects_id')
+    .join('resources as r', 'b.resources_id', '=', 'r.id')
+    .select('p.name', 'p.description', 'p.completed')
+}
+
 function testing() {
   return db('projects as p')
     .join('projects_resources as b', 'p.id', '=', 'b.projects_id')

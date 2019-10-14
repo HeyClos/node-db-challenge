@@ -28,14 +28,14 @@ exports.up = function(knex, Promise) {
       })
     .createTable('projects_resources', tbl => {
       tbl.increments();
-      tbl.integer('projects_id')
+      tbl.integer('projects_id') // column 1 - FK -> Projects PK(ID)
          .unsigned()
          .notNullable()
          .references('id')
          .inTable('projects')
          .onUpdate('CASCADE')
          .onDelete('CASCADE')
-      tbl.integer('resources_id')
+      tbl.integer('resources_id') // column 2 - FK -> Resources PK(ID)
          .unsigned()
          .notNullable()
          .references('id')
